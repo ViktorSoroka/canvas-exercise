@@ -1,68 +1,67 @@
 (function ($, undefined) {
     "use strict";
 
-        var canvas = document.getElementById("canvas"),
-            context = canvas.getContext("2d"),
-            canvas_w = canvas.width,
-            canvas_h = canvas.height;
+    var canvas = document.getElementById("canvas"),
+        context = canvas.getContext("2d"),
+        canvas_w = canvas.width,
+        canvas_h = canvas.height,
+        i,
+        j;
 
-        function renderGrid(gridPixelSize, color) {
+    function renderGrid(gridPixelSize, color) {
 
-            var d_canvas_w = canvas_w / gridPixelSize,
-                d_canvas_h = canvas_w / gridPixelSize;
-            context.save();
-            context.lineWidth = 0.5;
-            context.strokeStyle = color;
+        var d_canvas_w = canvas_w / gridPixelSize,
+            d_canvas_h = canvas_w / gridPixelSize;
+        context.save();
+        context.lineWidth = 0.5;
+        context.strokeStyle = color;
 
-            // horizontal grid lines
-            for (var i = 0; i <= canvas_h; i = i + d_canvas_h) {
-                context.beginPath();
-                context.moveTo(0, i);
-                context.lineTo(canvas_w, i);
-                context.closePath();
-                context.stroke();
-            }
-
-            // vertical grid lines
-            for(var j = 0; j <= canvas_w; j = j + d_canvas_w) {
-                context.beginPath();
-                context.moveTo(j, 0);
-                context.lineTo(j, canvas_h);
-                context.closePath();
-                context.stroke();
-            }
-
-            context.restore();
+        // horizontal grid lines
+        for (i = 0; i <= canvas_h; i = i + d_canvas_h) {
+            context.beginPath();
+            context.moveTo(0, i);
+            context.lineTo(canvas_w, i);
+            context.closePath();
+            context.stroke();
         }
 
-    function renderContent() {
-            //context.fillStyle = "rgba(255, 255, 255, 0.5)";
-            //context.fillRect(0, 0, canvas.width, canvas.height);
-            //context.lineCap = "round";
-            //context.lineJoin = "round";
-            //var text = "Hello, Canvas!";
-            //context.fillStyle = "#FF0000";
-            //context.strokeStyle = "#0000FF";
-            //context.font = "36px sans-serif";
-            //context.strokeText(text, 10, 50);
-            //context.fillText(text, 10, 50);
-            context.lineWidth = 5;
-            context.lineCap = "round";
-            context.lineJoin = "round";
-            context.moveTo(50, 50);
-            context.bezierCurveTo(60, 10, 100, 50, 150, 150);
-            //context.lineTo(150, 150);
-            context.lineTo(150, 50);
-            context.lineTo(50, 50);
+        // vertical grid lines
+        for (j = 0; j <= canvas_w; j = j + d_canvas_w) {
+            context.beginPath();
+            context.moveTo(j, 0);
+            context.lineTo(j, canvas_h);
+            context.closePath();
             context.stroke();
-            context.fillStyle = "#F00";
-            context.fill();
+        }
+        context.restore();
+    }
 
-        context.lineWidth = 1;
-        context.strokeText("Hello, Canvas!", 50, 150);
-         }
-    renderContent();
-        //renderGrid(10, "red");
+    function render() {
+        context.save();
+        renderGrid(30, '#f00');
+        context.translate(100, 75);
+        context.scale(2, 2);
+        //context.rotate(45 * Math.PI / 180);
+        context.transform(1, 0, -45 * Math.PI / 180, 45 * Math.PI / 180, 0, 0);
+        context.translate(-100, -75);
+        context.beginPath();
+        context.fillStyle = "#ff0";
+        context.strokeStyle = "#ff0";
+        context.moveTo(100, 75);
+        context.arc(100, 75, 50, 0.25 * Math.PI, 1.75 * Math.PI);
+        context.lineTo(100, 75);
+        context.stroke();
+        context.fill();
+
+        context.beginPath();
+        context.fillStyle = "#000";
+        context.strokeStyle = "#000";
+        context.arc(85, 45, 7, 0, 2 * Math.PI);
+        context.stroke();
+        context.fill();
+        context.restore();
+    }
+    render();
 
 
-})(jQuery);
+}(jQuery));
