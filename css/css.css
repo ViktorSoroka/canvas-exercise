@@ -23,25 +23,31 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
 body {
     line-height: 1;
 }
+
 ol, ul {
     list-style: none;
 }
+
 blockquote, q {
     quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -49,49 +55,21 @@ table {
 
 /*user style*/
 
-body{
+body {
     font-family: "Yanone Kaffeesatz", "Arial", sans-serif;
     font-size: 20px;
-    padding: 20px;
     background: url(http://subtlepatterns.com/patterns/restaurant.png);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-main{
-    width: 1000px;
-    margin: 0 auto;
+main {
+    /*width: 1000px;*/
+    /*margin: 0 auto;*/
 }
 
-canvas{
+canvas {
     display: block;
-    margin: 0 auto 20px;
-}
-
-.choose-wrap{
-    width: 50%;
-    float: left;
-}
-
-.buttons {
-    /*position: relative;*/
-}
-
-#up, #down, #left, #right {
-    position: absolute;
-    padding: 2px;
-}
-#up {
-    top: 420px;
-    left: 30px;
-}
-#left {
-    top: 445px;
-    left: 12px;
-}
-#right {
-    top: 445px;
-    left: 45px;
-}
-#down {
-    top: 470px;
-    left: 25px;
+    /*margin: 0 auto 20px;*/
 }
